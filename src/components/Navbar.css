@@ -1,9 +1,9 @@
 .navbar {
-    background-color: #20232a;
-    padding: 15px 30px;
-    color: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
   
   .nav-container {
     display: flex;
@@ -27,3 +27,35 @@
     color: #61dafb;
   }
   
+  @font-face {
+  font-family: 'Futura PT';
+  src: url('C:/Users/007/frontend/public/fonts/FuturaPTMedium.otf') format('otf');
+}
+
+.navbar {
+  background-color: transparent; /* Цвет фона меню */
+  padding: 10px;
+  text-align: center;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  margin: 0 20px; /* Расстояние между элементами меню */
+}
+
+.navbar a {
+  font-family: 'Futura PT', sans-serif; /* Применяем шрифт Futura */
+  font-size: 20px;
+  color: #303030; /* Цвет текста */
+  text-decoration: none; /* Убираем подчеркивание */
+  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.navbar a:hover {
+  color: #BB2B22; /* Цвет текста при наведении */
+}

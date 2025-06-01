@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F6F3EE;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 1024px;
+  background-color: #F6F3EE;
+  padding-top: 0px; /* отступ сверху */
+}
+
+.rectangle {
+  width: 1380px;
+  height: 420px;
+  border: 5px solid #BB2B22;
+  background-color: transparent;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden; /* Чтобы не показывать лишние изображения за пределами */
+}
+.image-container {
+  display: flex;
+  animation: slideImages 20s infinite linear; 
+}
+
+.image-slide {
+  width: 1380px; 
+  height: 420px;
+  object-fit: cover; 
+}
+
+@keyframes slideImages {
+  0% {
+    transform: translateX(0); 
+  }
+  25% {
+    transform: translateX(-100%); 
+  }
+  50% {
+    transform: translateX(-200%); 
+  }
+  75% {
+    transform: translateX(-300%); 
+  }
+  100% {
+    transform: translateX(0); 
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.main-title {
+  font-family: 'Mak', sans-serif;
+  font-weight: 300;
+  font-size: 250px;
+  color: #BB2B22;
+  margin: 0;
+  line-height: 1;
+  animation: slideInFromLeft 3s ease-out;
+}
+
+.subtitle {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 50px;
+  color: #303030;
+  margin-top: 24px;
+  opacity: 0; /* Изначально скрыто */
+  animation: slideInFromLeft 3s ease-out 3s forwards; /* Задержка в 2 секунды */
+}

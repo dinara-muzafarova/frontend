@@ -15,19 +15,19 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <h1 className="logo">Кафедра</h1>
+        <div className="logo">
+          <Link to="/">Кафедра АСУ</Link></div>
         <div className="nav-links">
-          <Link to="/teachers">Преподаватели</Link>
+          <Link to="/history">История</Link>
           <Link to="/achievements">Достижения</Link>
           <Link to="/reviews">Отзывы</Link>
           <Link to="/media">Галерея</Link>
-          <Link to="/partners">Партнёры</Link>
           <Link to="/submit-review">Оставить отзыв</Link>
           <Link to="/account">Личный кабинет</Link>
           {!token ? (
             <>
                 <Link to="/login">Войти</Link>
-                <Link to="/register" style={{ marginLeft: '10px' }}>Регистрация</Link>
+                <Link to="/register" style={{ marginLeft: '10px' }}>Регистрация</Link> 
             </>
             ) : (
             <button onClick={handleLogout} style={{ marginLeft: '15px' }}>Выйти</button>

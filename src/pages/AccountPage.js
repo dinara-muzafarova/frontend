@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../api/axios';
 import { useNavigate } from 'react-router-dom';
+import './AccountPage.css';
 
 const AccountPage = ({ authToken, setAuthToken }) => {
   const [user, setUser] = useState(null);
@@ -15,12 +16,22 @@ const AccountPage = ({ authToken, setAuthToken }) => {
     }
 
     Promise.all([
-      API.get('me/'),
-      API.get('reviews/')
+      API.get('me/'),         // Получаем информацию о текущем пользователе
+      API.get('reviews/')     // Получаем все отзывы
     ])
       .then(([userRes, reviewRes]) => {
-        setUser(userRes.data);
-        setReviews(reviewRes.data);
+        const currentUser = userRes.data;
+        setUser(currentUser);
+
+        // Проверь, как выглядит структура объекта отзыва в reviewRes.data
+        console.log('Все отзывы:', reviewRes.data);
+
+        // Если в объекте отзыва есть поле user_id или user, фильтруем отзывы текущего пользователя
+        const userReviews = reviewRes.data.filter(
+          review => review.user === currentUser.id  // Или use review.user_id, если у тебя такое поле
+        );
+
+        setReviews(userReviews);
       })
       .catch(err => {
         console.error(err);
@@ -53,14 +64,14 @@ const AccountPage = ({ authToken, setAuthToken }) => {
     navigate('/submit-review');
   };
 
-  if (loading) return <p className="container">Загрузка...</p>;
+  if (loading) return <p className="account-container">Загрузка...</p>;
 
   return (
-    <div className="container">
-      <h2>Личный кабинет</h2>
+    <div className="account-container">
+      <h2 className="account-title">Личный кабинет</h2>
 
       {user ? (
-        <div style={{ marginBottom: '20px' }}>
+        <div className="user-info">
           <p><strong>Логин:</strong> {user.username}</p>
           <p><strong>Email:</strong> {user.email || 'не указан'}</p>
         </div>
@@ -68,40 +79,39 @@ const AccountPage = ({ authToken, setAuthToken }) => {
         <p>Ошибка загрузки данных пользователя.</p>
       )}
 
-      <button onClick={handleNewReview} style={{ marginBottom: '20px' }}>
+      <button onClick={handleNewReview} className="button">
         📝 Оставить отзыв
       </button>
 
-      <h3>Мои отзывы</h3>
+      <h3 className="review-section-title">ваши отзывы</h3>
       {reviews.length === 0 ? (
         <p>У вас ещё нет отзывов.</p>
       ) : (
-        <ul>
-          {reviews.map(review => (
-            <li key={review.id} style={{ marginBottom: '30px' }}>
-              <p><strong>ФИО:</strong> {review.name}</p>
-              <p><strong>Год выпуска:</strong> {review.graduation_year}</p>
-              <p><strong>Отзыв:</strong> {review.text}</p>
-              {review.photo && (
-                <img
-                  src={review.photo}
-                  alt="Фото выпускника"
-                  style={{ width: '200px', marginTop: '10px' }}
-                />
-              )}
-              <br />
-              <button onClick={() => handleEdit(review.id)} style={{ marginRight: '10px', marginTop: '10px' }}>
+        reviews.map(review => (
+          <div key={review.id} className="review-card">
+            <p><strong>ФИО:</strong> {review.name}</p>
+            <p><strong>Год выпуска:</strong> {review.graduation_year}</p>
+            <p><strong>Отзыв:</strong> «{review.text}»</p>
+            {review.photo && (
+              <img
+                src={review.photo}
+                alt="Фото выпускника"
+                className="review-photo"
+              />
+            )}
+            <div>
+              <button onClick={() => handleEdit(review.id)} className="button">
                 ✏️ Редактировать
               </button>
-              <button onClick={() => handleDelete(review.id)} style={{ marginTop: '10px' }}>
+              <button onClick={() => handleDelete(review.id)} className="button">
                 🗑 Удалить
               </button>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </div>
+        ))
       )}
 
-      <button onClick={handleLogout} style={{ marginTop: '30px' }}>
+      <button onClick={handleLogout} className="button logout-button">
         🚪 Выйти
       </button>
     </div>

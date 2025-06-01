@@ -1,0 +1,79 @@
+.account-container {
+  padding: 40px;
+  font-family: 'Futura PT', sans-serif;
+  color: #303030;
+}
+
+.account-title {
+  font-family: 'MAK', sans-serif;
+  color: #BB2B22;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.user-info {
+  margin-bottom: 30px;
+  padding: 0;                
+  border: none;             
+  border-radius: 0;         
+  background-color: none;   
+  box-shadow: none;         
+}
+
+.user-info p {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.review-section-title {
+  font-family: 'MAK', sans-serif;
+  color: #BB2B22;
+  font-size: 28px;
+  margin: 30px 0 20px;
+}
+
+.review-card {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 2px solid #0A386B;
+  border-radius: 20px;
+  max-width: 700px;
+  background-color: transparent;
+  box-shadow: 0 4px 12px rgba(10, 56, 107, 0.15);
+}
+
+.review-card p {
+  font-size: 17px;
+  margin: 5px 0;
+}
+
+.review-photo {
+  width: 240px;
+  margin-top: 10px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.button {
+  background-color: transparent;
+  color: #303030;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  color: #BB2B22; 
+}
+
+.button + .button {
+  margin-left: 10px;
+}
+
+.logout-button {
+  margin-top: 30px;
+}

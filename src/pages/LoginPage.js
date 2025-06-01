@@ -21,7 +21,6 @@ const LoginPage = ({ setAuthToken }) => {
     })
       .then(async res => {
         const contentType = res.headers.get('content-type');
-
         if (!res.ok) {
           if (contentType && contentType.includes('application/json')) {
             const data = await res.json();
@@ -30,7 +29,6 @@ const LoginPage = ({ setAuthToken }) => {
             throw new Error('Сервер вернул HTML вместо JSON (возможно, ошибка 404 или 500)');
           }
         }
-
         const data = await res.json();
         localStorage.setItem('token', data.token);
         setAuthToken(data.token);

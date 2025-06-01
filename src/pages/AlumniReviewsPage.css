@@ -1,0 +1,74 @@
+.alumni-container {
+  padding: 20px;
+  font-family: 'Futura PT', sans-serif;
+  color: #303030;
+}
+
+.alumni-title {
+  font-family: 'MAK', sans-serif;
+  color: #BB2B22;
+  font-size: 50px;
+  margin: 0 0 30px 0;
+}
+
+.alumni-review {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  padding: 20px;
+  border: 2px solid #0A386B;
+  border-radius: 20px;
+  max-width: 700px;
+  background-color: transparent;
+  box-shadow: 0 4px 12px rgba(10, 56, 107, 0.15);
+  font-family: 'Futura PT', sans-serif;
+}
+
+.alumni-review-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.alumni-review h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+.alumni-graduation {
+  margin-bottom: 15px;
+  font-size: 18px; 
+  font-weight: 500;
+}
+
+.alumni-review p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.alumni-photo {
+  width: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.alumni-actions {
+  margin-top: 10px;
+}
+
+.alumni-like-button {
+  background-color: #BB2B22;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: 'Futura PT', sans-serif;
+}
+
+.alumni-likes-count {
+  margin-left: 15px;
+  font-weight: bold;
+}
