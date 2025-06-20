@@ -9,46 +9,82 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 1024px;
+  height: 100%;
   background-color: #F6F3EE;
-  padding-top: 0px; /* отступ сверху */
+  padding-top: 0px;
 }
 
 .rectangle {
   width: 1380px;
-  height: 420px;
+  height: 85vh;
   border: 5px solid #BB2B22;
   background-color: transparent;
   margin-bottom: 60px;
   position: relative;
-  overflow: hidden; /* Чтобы не показывать лишние изображения за пределами */
+  overflow: hidden; 
 }
+
 .image-container {
   display: flex;
-  animation: slideImages 20s infinite linear; 
+  animation: slideImages 44s infinite linear; 
 }
 
 .image-slide {
-  width: 1380px; 
-  height: 420px;
-  object-fit: cover; 
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.image-container::after {
+  content: "";
+  display: flex;
+  min-width: 0;
+  height: 0;
 }
 
 @keyframes slideImages {
   0% {
-    transform: translateX(0); 
+    transform: translateX(0);
   }
-  25% {
-    transform: translateX(-100%); 
+  8% {
+    transform: translateX(-100%);
   }
-  50% {
-    transform: translateX(-200%); 
+  16% {
+    transform: translateX(-200%);
   }
-  75% {
-    transform: translateX(-300%); 
+  24% {
+    transform: translateX(-300%);
+  }
+  32% {
+    transform: translateX(-400%);
+  }
+  40% {
+    transform: translateX(-500%);
+  }
+  48% {
+    transform: translateX(-600%);
+  }
+  56% {
+    transform: translateX(-700%);
+  }
+  64% {
+    transform: translateX(-800%);
+  }
+  72% {
+    transform: translateX(-900%);
+  }
+  80% {
+    transform: translateX(-1000%);
+  }
+  88% {
+    transform: translateX(-1100%);
+  }
+  96% {
+    transform: translateX(-1200%);
   }
   100% {
-    transform: translateX(0); 
+    transform: translateX(-1200%);
   }
 }
 
@@ -66,7 +102,7 @@ body {
 .main-title {
   font-family: 'Mak', sans-serif;
   font-weight: 300;
-  font-size: 250px;
+  font-size: 12vw; 
   color: #BB2B22;
   margin: 0;
   line-height: 1;
@@ -75,9 +111,120 @@ body {
 
 .subtitle {
   font-family: 'Futura PT', sans-serif;
-  font-size: 50px;
+  font-size: 5vw;
   color: #303030;
   margin-top: 24px;
-  opacity: 0; /* Изначально скрыто */
-  animation: slideInFromLeft 3s ease-out 3s forwards; /* Задержка в 2 секунды */
+  opacity: 0;
+  animation: slideInFromLeft 3s ease-out 3s forwards;
+}
+
+.dean-congratulation {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.dean-title {
+  font-family: 'Futura PT', sans-serif;
+  font-family: 'Mak', sans-serif;
+  font-size: 3vw;
+  color: #BB2B22;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+.dean-text {
+  font-family: 'Futura PT', sans-serif;
+  font-weight: normal;
+  font-size: 1.3vw;
+  color: #303030;
+  line-height: 1.2;
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.dean-text2 {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1.3vw;
+  color: #303030;
+  line-height: 1.2;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.dean-text3 {
+  font-family: 'Futura PT', sans-serif;
+  font-size: 1.3vw;
+  color: #303030;
+  line-height: 1.2;
+  text-align: center;
+  margin-bottom:10px;
+}
+
+.dean-photo img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+  .dean-title {
+    font-size: 5vw;
+  }
+
+  .dean-text {
+    font-size: 4vw;
+  }
+
+  .dean-photo img {
+    max-width: 200px;
+  }
+  .rectangle {
+    height: 50vh; 
+  }
+
+  .image-slide {
+    height: 50vh; 
+  }
+
+  .main-title {
+    font-size: 20vw; 
+  }
+
+  .subtitle {
+    font-size: 8vw; 
+  }
+}
+
+
+@media (max-width: 375px) {
+    .dean-title {
+    font-size: 7vw;
+  }
+
+  .dean-text {
+    font-size: 6vw;
+  }
+
+  .dean-photo img {
+    max-width: 150px;
+  }
+  .rectangle {
+    height: 40vh;
+  }
+
+  .image-slide {
+    height: 40vh;
+  }
+
+  .main-title {
+    font-size: 30vw; 
+  }
+
+  .subtitle {
+    font-size: 12vw;
+  }
 }

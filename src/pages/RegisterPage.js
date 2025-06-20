@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './RegisterPage.css'; 
 
 const RegisterPage = ({ setAuthToken }) => {
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -17,7 +18,6 @@ const RegisterPage = ({ setAuthToken }) => {
     e.preventDefault();
     setError('');
 
-    // 1. Регистрация нового пользователя
     fetch('http://127.0.0.1:8000/api/register/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -36,7 +36,6 @@ const RegisterPage = ({ setAuthToken }) => {
         return data;
       })
 
-      // 2. Авторизация — получение токена
       .then(() => {
         return fetch('http://127.0.0.1:8000/api-token-auth/', {
           method: 'POST',
@@ -44,7 +43,6 @@ const RegisterPage = ({ setAuthToken }) => {
           body: JSON.stringify(form),
         });
       })
-
       .then(async res => {
         const contentType = res.headers.get('content-type');
         const data = contentType && contentType.includes('application/json')
@@ -52,48 +50,55 @@ const RegisterPage = ({ setAuthToken }) => {
           : null;
 
         if (!res.ok) {
-          throw new Error(data?.non_field_errors?.[0] || 'Ошибка авторизации');
+          throw new Error(data?.error || 'Ошибка авторизации');
         }
 
         localStorage.setItem('token', data.token);
         setAuthToken(data.token);
-        navigate('/submit-review');
+        navigate('/account');
       })
-
       .catch(err => {
         setError(err.message);
       });
   };
 
   return (
-    <div className="container">
-      <h2>Регистрация</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-        <div>
-          <label>Имя пользователя:</label><br />
-          <input
-            type="text"
-            name="username"
-            value={form.username}
-            onChange={handleChange}
-            required
-          />
+    <div className="register-container">
+      <div className="register-form">
+        <h2 className="register-title">Регистрация</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="register-form-group">
+            <label className="register-label">Email:</label><br />
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              className="register-input"
+              required
+            />
+          </div>
+          <div className="register-form-group">
+            <label className="register-label">Пароль:</label><br />
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              className="register-input"
+              required
+            />
+          </div>
+        </form>
+
+        <div className="register-button-container">
+          <button type="submit" className="register-submit-button" onClick={handleSubmit}>
+            Зарегистрироваться
+          </button>
         </div>
-        <div>
-          <label>Пароль:</label><br />
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" style={{ marginTop: '10px' }}>
-          Зарегистрироваться
-        </button>
-        {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      </form>
+
+        {error && <p className="register-error-message">{error}</p>}
+      </div>
     </div>
   );
 };

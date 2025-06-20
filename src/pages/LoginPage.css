@@ -1,0 +1,104 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;  
+  height: 100vh; 
+  padding: 20px;
+  font-family: 'Futura PT', sans-serif;
+  color: #303030;
+}
+
+.login-form {
+  background-color: #F6F3EE;
+  padding: 20px;
+  border: 2px solid #0A386B;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(10, 56, 107, 0.15);
+  width: 100%;
+  height: 380px;
+  max-width: 500px;
+}
+.register-link-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-link {
+  color: #BB2B22;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.login-title {
+  font-family: 'MAK', sans-serif;
+  color: #BB2B22;
+  font-size: 50px;
+  font-weight: normal;
+  margin: 0 0 15px 0; 
+  text-align: center;
+}
+
+.login-form-group {
+  margin-bottom: 10px;  
+}
+
+.login-label {
+  display: block;
+  margin-bottom: 5px;  
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.login-input {
+  width: 93%;
+  padding: 10px 15px;
+  border: 1px solid #0A386B;
+  border-radius: 6px;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 16px;
+}
+
+.login-submit-button {
+  background-color: #BB2B22;
+  color: #F6F3EE;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.login-submit-button:hover {
+  background-color: #9e2222;
+}
+
+.login-error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.login-link {
+  color: #BB2B22;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.login-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;  
+}

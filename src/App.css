@@ -20,7 +20,7 @@ h1.main-title {
 
 @font-face {
   font-family: 'FuturaPTMedium';
-  src: url('C:/Users/007/frontend/public/fonts/FuturaPTMedium.otf') format('otf');
+  src: url('./fonts/FuturaPTMedium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -28,12 +28,11 @@ h1.main-title {
 
 @font-face {
   font-family: 'MAK';
-  src: url('C:/Users/007/frontend/public/fonts/MAK.otf') format('otf');
-  font-weight: 300; 
+  src: url('./fonts/MAK.otf') format('opentype');
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -80,7 +79,7 @@ body {
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 40px 20px;
+
 }
 
 h2 {

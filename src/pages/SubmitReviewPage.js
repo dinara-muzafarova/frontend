@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import API from '../api/axios';
 import { Link } from 'react-router-dom';
+import './SubmitReviewPage.css'; 
 
 const SubmitReviewPage = ({ authToken }) => {
   const [formData, setFormData] = useState({
@@ -14,9 +15,9 @@ const SubmitReviewPage = ({ authToken }) => {
 
   if (!authToken) {
     return (
-      <div className="container">
-        <h2>Оставить отзыв</h2>
-        <p>Для отправки отзыва необходимо <Link to="/login">войти</Link>.</p>
+      <div className="alumni-container">
+        <h2 className="alumni-title">Оставить отзыв</h2>
+        <p className="alumni-message">Для отправки отзыва необходимо <Link to="/login" className="alumni-link">войти</Link>.</p>
       </div>
     );
   }
@@ -60,31 +61,65 @@ const SubmitReviewPage = ({ authToken }) => {
         setMessage(msg);
       });
   };
-  
 
   return (
-    <div className="container">
-      <h2>Оставить отзыв</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: 500 }}>
-        <div>
-          <label>ФИО:</label><br />
-          <input type="text" name="name" value={formData.name} onChange={handleChange} required style={{ width: '100%' }} />
+    <div className="alumni-container">
+      <h2 className="alumni-title">Оставить отзыв</h2>
+      <form onSubmit={handleSubmit} className="alumni-form">
+        <div className="alumni-form-group">
+          <label className="alumni-label">ФИО:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            placeholder="Введите ФИО"
+            className="alumni-input"
+          />
         </div>
-        <div>
-          <label>Год выпуска:</label><br />
-          <input type="number" name="graduation_year" value={formData.graduation_year} onChange={handleChange} required style={{ width: '100%' }} />
+        
+        <div className="alumni-form-group">
+          <label className="alumni-label">Год выпуска:</label>
+          <input
+            type="number"
+            name="graduation_year"
+            value={formData.graduation_year}
+            onChange={handleChange}
+            required
+            placeholder="Введите год выпуска"
+            className="alumni-input"
+          />
         </div>
-        <div>
-          <label>Отзыв:</label><br />
-          <textarea name="text" value={formData.text} onChange={handleChange} required rows={4} style={{ width: '100%' }} />
+        
+        <div className="alumni-form-group">
+          <label className="alumni-label">Отзыв:</label>
+          <textarea
+            name="text"
+            value={formData.text}
+            onChange={handleChange}
+            required
+            placeholder="Напишите отзыв"
+            rows={4}
+            className="alumni-textarea"
+          />
         </div>
-        <div>
-          <label>Фото (необязательно):</label><br />
-          <input type="file" name="photo" accept="image/*" onChange={handleChange} />
+        
+        <div className="alumni-form-group">
+          <label className="alumni-label">Фото (необязательно):</label>
+          <input
+            type="file"
+            name="photo"
+            accept="image/*"
+            onChange={handleChange}
+            className="alumni-file-input"
+          />
         </div>
-        <button type="submit" style={{ marginTop: '10px' }}>Отправить</button>
+        
+        <button type="submit" className="alumni-submit-button">Отправить</button>
       </form>
-      {message && <p style={{ marginTop: '15px' }}>{message}</p>}
+      
+      {message && <p className="alumni-message">{message}</p>}
     </div>
   );
 };

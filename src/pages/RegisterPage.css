@@ -1,0 +1,90 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  height: 100vh; 
+  padding: 20px;
+  font-family: 'Futura PT', sans-serif;
+  color: #303030;
+}
+
+.register-form {
+  background-color: #F6F3EE;
+  padding: 20px;
+  border: 2px solid #0A386B;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(10, 56, 107, 0.15);
+  width: 100%;
+  height: 350px;
+  max-width: 500px; 
+}
+
+
+.register-title {
+  font-family: 'MAK', sans-serif;
+  color: #BB2B22;
+  font-size: 50px;
+  margin: 0 0 15px 0; 
+  text-align: center;
+}
+
+.register-form-group {
+  margin-bottom: 10px;  
+}
+
+.register-label {
+  display: block;
+  margin-bottom: 0;  
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.register-input {
+  width: 93%;
+  padding: 10px 15px;
+  border: 1px solid #0A386B;
+  border-radius: 6px;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 16px;
+}
+
+.register-submit-button {
+  background-color: #BB2B22;
+  color: #F6F3EE;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.register-submit-button:hover {
+  background-color: #9e2222;
+}
+
+.register-error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.register-link {
+  color: #BB2B22;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.register-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;  
+}

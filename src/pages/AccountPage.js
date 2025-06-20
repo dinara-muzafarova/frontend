@@ -16,19 +16,15 @@ const AccountPage = ({ authToken, setAuthToken }) => {
     }
 
     Promise.all([
-      API.get('me/'),         // Получаем информацию о текущем пользователе
-      API.get('reviews/')     // Получаем все отзывы
+      API.get('me/'),         
+      API.get('reviews/')     
     ])
       .then(([userRes, reviewRes]) => {
         const currentUser = userRes.data;
         setUser(currentUser);
 
-        // Проверь, как выглядит структура объекта отзыва в reviewRes.data
-        console.log('Все отзывы:', reviewRes.data);
-
-        // Если в объекте отзыва есть поле user_id или user, фильтруем отзывы текущего пользователя
         const userReviews = reviewRes.data.filter(
-          review => review.user === currentUser.id  // Или use review.user_id, если у тебя такое поле
+          review => review.id === currentUser.id
         );
 
         setReviews(userReviews);
@@ -41,9 +37,8 @@ const AccountPage = ({ authToken, setAuthToken }) => {
   }, [authToken, navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    setAuthToken(null);
-    navigate('/');
+    setAuthToken(null); 
+    navigate('/'); 
   };
 
   const handleDelete = (id) => {
@@ -79,11 +74,11 @@ const AccountPage = ({ authToken, setAuthToken }) => {
         <p>Ошибка загрузки данных пользователя.</p>
       )}
 
-      <button onClick={handleNewReview} className="button">
+      <button onClick={handleNewReview} className="button new-review-button">
         📝 Оставить отзыв
       </button>
 
-      <h3 className="review-section-title">ваши отзывы</h3>
+      <h3 className="review-section-title">Ваши отзывы</h3>
       {reviews.length === 0 ? (
         <p>У вас ещё нет отзывов.</p>
       ) : (
@@ -99,11 +94,11 @@ const AccountPage = ({ authToken, setAuthToken }) => {
                 className="review-photo"
               />
             )}
-            <div>
-              <button onClick={() => handleEdit(review.id)} className="button">
+            <div className="review-actions">
+              <button onClick={() => handleEdit(review.id)} className="button edit-button">
                 ✏️ Редактировать
               </button>
-              <button onClick={() => handleDelete(review.id)} className="button">
+              <button onClick={() => handleDelete(review.id)} className="button delete-button">
                 🗑 Удалить
               </button>
             </div>
@@ -111,9 +106,11 @@ const AccountPage = ({ authToken, setAuthToken }) => {
         ))
       )}
 
-      <button onClick={handleLogout} className="button logout-button">
-        🚪 Выйти
-      </button>
+      <div className="logout-container">
+        <button onClick={handleLogout} className="button logout-button">
+          Выйти
+        </button>
+      </div>
     </div>
   );
 };

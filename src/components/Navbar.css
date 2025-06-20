@@ -4,58 +4,113 @@
   margin: 0;
   text-align: center;
 }
-  
-  .nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    transition: color 0.2s ease;
-  }
-  
-  .nav-links a:hover {
-    color: #61dafb;
-  }
-  
-  @font-face {
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; 
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: auto;  
+  height: 80px; 
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #61dafb;
+}
+
+@font-face {
   font-family: 'Futura PT';
-  src: url('C:/Users/007/frontend/public/fonts/FuturaPTMedium.otf') format('otf');
+  src: url('./fonts/FuturaPTMedium.otf') format('opentype');
 }
 
 .navbar {
-  background-color: transparent; /* Цвет фона меню */
-  padding: 10px;
+  background-color: transparent;
   text-align: center;
 }
 
 .navbar ul {
   list-style-type: none;
   padding: 0;
-  margin: 0;
 }
 
 .navbar li {
-  margin: 0 20px; /* Расстояние между элементами меню */
+  margin: 0px;
 }
 
 .navbar a {
-  font-family: 'Futura PT', sans-serif; /* Применяем шрифт Futura */
-  font-size: 20px;
-  color: #303030; /* Цвет текста */
-  text-decoration: none; /* Убираем подчеркивание */
-  transition: color 0.3s ease; /* Плавное изменение цвета при наведении */
+  font-family: 'Futura PT', sans-serif;
+  font-size: 25px;
+  color: #303030;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: normal;
 }
 
 .navbar a:hover {
-  color: #BB2B22; /* Цвет текста при наведении */
+  color: #BB2B22;
+}
+
+@media (max-width: 820px) {
+  .navbar a {
+    font-size: 18px; 
+  }
+
+  .logo img {
+    height: 60px;
+  }
+
+  .nav-container {
+    padding: 0 10px; 
+  }
+
+  .nav-links {
+    margin-left: 10px; 
+  }
+
+  .nav-links a {
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar a {
+    font-size: 16px; 
+  }
+
+  .logo img {
+    height: 50px; 
+  }
+
+  .nav-container {
+    padding: 0 5px; 
+  }
+
+  .nav-links {
+    margin-left: 5px; 
+  }
+
+  .nav-links a {
+    margin-left: 10px; 
+  }
 }

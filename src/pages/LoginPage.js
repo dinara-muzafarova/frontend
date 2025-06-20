@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import './LoginPage.css'; 
+import API from '../api/axios';
 
 const LoginPage = ({ setAuthToken }) => {
-  const [form, setForm] = useState({ username: '', password: '' });
+  const [form, setForm] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+    setForm(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -21,18 +26,20 @@ const LoginPage = ({ setAuthToken }) => {
     })
       .then(async res => {
         const contentType = res.headers.get('content-type');
+        const data = contentType && contentType.includes('application/json')
+          ? await res.json()
+          : null;
+
         if (!res.ok) {
-          if (contentType && contentType.includes('application/json')) {
-            const data = await res.json();
-            throw new Error(data.non_field_errors?.[0] || 'Ошибка входа');
-          } else {
-            throw new Error('Сервер вернул HTML вместо JSON (возможно, ошибка 404 или 500)');
-          }
+          throw new Error(data?.error || 'Ошибка авторизации');
         }
-        const data = await res.json();
+
+        return data;
+      })
+      .then(data => {
         localStorage.setItem('token', data.token);
         setAuthToken(data.token);
-        navigate('/submit-review');
+        navigate('/account');
       })
       .catch(err => {
         setError(err.message);
@@ -40,32 +47,46 @@ const LoginPage = ({ setAuthToken }) => {
   };
 
   return (
-    <div className="container">
-      <h2>Вход</h2>
-      <form onSubmit={handleSubmit} style={{ maxWidth: 400 }}>
-        <div>
-          <label>Логин:</label><br />
-          <input
-            type="text"
-            name="username"
-            value={form.username}
-            onChange={handleChange}
-            required
-          />
+    <div className="login-container">
+      <div className="login-form">
+        <h2 className="login-title">Авторизация</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="login-form-group">
+            <label className="login-label">Email:</label><br />
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              className="login-input"
+              required
+            />
+          </div>
+          <div className="login-form-group">
+            <label className="login-label">Пароль:</label><br />
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              className="login-input"
+              required
+            />
+          </div>
+        </form>
+
+        <div className="login-button-container">
+          <button type="submit" className="login-submit-button" onClick={handleSubmit}>
+            Войти
+          </button>
         </div>
-        <div>
-          <label>Пароль:</label><br />
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-          />
+
+        {error && <p className="login-error-message">{error}</p>}
+
+        <div className="register-link-container">
+          <p>Еще не зарегистрированы? <Link to="/register" className="login-link">Зарегистрироваться</Link></p>
         </div>
-        <button type="submit" style={{ marginTop: '10px' }}>Войти</button>
-        {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
-      </form>
+      </div>
     </div>
   );
 };

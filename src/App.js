@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './fonts/FuturaPTMedium.otf';
+import './fonts/MAK.otf';
 
 import Navbar from './components/Navbar';
 import HistoryPage from './pages/HistoryPage';

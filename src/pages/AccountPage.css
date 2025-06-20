@@ -1,14 +1,16 @@
 .account-container {
   padding: 40px;
   font-family: 'Futura PT', sans-serif;
+  font-weight: normal;
   color: #303030;
 }
 
 .account-title {
   font-family: 'MAK', sans-serif;
   color: #BB2B22;
-  font-size: 36px;
+  font-size: 50px;
   margin-bottom: 30px;
+  font-weight: normal;
 }
 
 .user-info {
@@ -28,8 +30,9 @@
 .review-section-title {
   font-family: 'MAK', sans-serif;
   color: #BB2B22;
-  font-size: 28px;
+  font-size: 40px;
   margin: 30px 0 20px;
+  font-weight: normal;
 }
 
 .review-card {
@@ -74,6 +77,23 @@
   margin-left: 10px;
 }
 
+.logout-container {
+  text-align: center; 
+  margin-top: 40px; 
+}
+
 .logout-button {
-  margin-top: 30px;
+  background-color: #BB2B22;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #9A1E1E;
 }

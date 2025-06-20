@@ -1,0 +1,78 @@
+.achievements-container {
+  padding: 20px;
+  font-family: 'Futura PT', sans-serif;
+  color: #303030;
+  box-sizing: border-box;
+}
+
+.achievements-title {
+    font-family: 'MAK', sans-serif;
+  font-size: 50px;
+  font-weight: normal;
+  color: #BB2B22;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.achievements-list {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.achievement {
+  background-color: transparent;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-bottom: 2px solid #BB2B22;
+}
+
+.achievement-title {
+  font-size: 35px;
+  font-family: 'Futura PT', sans-serif;
+  font-weight: normal;
+  color: #0A386B;
+  margin-bottom: 10px;
+}
+
+.achievement-date {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.achievement-description {
+  font-size: 23px;
+  font-family: 'Futura PT', sans-serif;
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.achievement-photo {
+  max-width: 500px;
+  max-height: 500px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;        
+  margin: 0 auto;   
+}
+
+@media (max-width: 820px) {
+  .achievements-title {
+    font-size: 32px; 
+  }
+
+  .achievement {
+    padding: 15px;
+  }
+
+  .achievement-title {
+    font-size: 25px;
+  }
+
+  .achievement-description {
+    font-size: 16px;
+  }
+}

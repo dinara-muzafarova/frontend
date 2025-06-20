@@ -6,12 +6,22 @@ body {
 }
 
 .history-page {
-padding: 100px 0 0 0;
+  padding: 100px 0 0 0;
   position: relative;
+}
+
+figcaption {
+  font-family: 'Mak', serif;
+  text-align: center; 
+  font-size: 35px;
+  font-weight: normal;
+  color: #BB2B22;
+  margin-top: 10px; 
 }
 
 .history-header {
   font-size: 50px;
+  font-weight: normal;
   font-family: 'Mak', serif;
   color: #0a386b;
   text-transform: lowercase;
@@ -19,7 +29,6 @@ padding: 100px 0 0 0;
   position: relative;
 }
 
-/* Вертикальная линия */
 .timeline {
   border-left: 2px solid #0a386b;
   position: relative;
@@ -27,15 +36,12 @@ padding: 100px 0 0 0;
   margin-left: -60px;
 }
 
-/* Один элемент временной шкалы */
 .timeline-item {
   margin-bottom: 120px;
   position: relative;
 }
 
-/* Горизонтальная линия от вертикальной линии к году */
 .timeline-item::before {
-    
   content: '';
   position: absolute;
   width: 120px;
@@ -45,7 +51,7 @@ padding: 100px 0 0 0;
   left: -200px;
 }
 
-.timeline-item.horizontal::before {
+.timeline-item.no-line::before {
   content: none;
 }
 
@@ -57,19 +63,9 @@ padding: 100px 0 0 0;
   margin-left: -140px;
 }
 
-.photo-container {
-  flex-shrink: 0;
-}
-
-.history-photo {
-  max-width: 500px;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Год */
 .timeline-year {
   font-size: 40px;
+  font-weight: normal;
   font-family: 'Mak', serif;
   color: #0a386b;
   position: absolute;
@@ -77,7 +73,15 @@ padding: 100px 0 0 0;
   top: -25px;
 }
 
-/* Точка на пересечении */
+
+.timeline-item.horizontal .timeline-year {
+  position: static;
+  font-size: 40px;
+  color: #0a386b;
+  font-family: 'Mak', serif;
+  margin-bottom: 10px;
+}
+
 .timeline-dot {
   width: 20px;
   height: 20px;
@@ -88,28 +92,121 @@ padding: 100px 0 0 0;
   top: 8px;
 }
 
+.timeline-item.horizontal .timeline-dot {
+  position: static;
+  margin-bottom: 30px;
+}
+
 .timeline-content {
-  font-size: 30px;
+  font-size: 35px;
+  font-weight: normal;
   max-width: 1600px;
   line-height: 1.6;
   padding-left: 40px;
-  padding-right: 0px;
+  padding-right: 0;
   text-align: right;
-  margin-left: auto;      
+  margin-left: auto;
   margin-right: 0;
   position: relative;
+
 }
 
 .timeline-content2 {
   font-size: 30px;
+  font-weight: normal;
   max-width: 1600px;
   line-height: 1.6;
   padding-left: 0;
-  padding-right: 0px;
+  padding-right: 0;
   text-align: right;
-  margin-left: auto;      
+  margin-left: auto;
   margin-right: 0;
   position: relative;
+}
+.timeline-horizontal-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding-right: 40px;
+}
+
+.timeline-horizontal-block .text-block {
+  flex: 1;
+  font-size: 30px;
+  font-weight: normal;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.timeline-horizontal-block .image-block {
+  flex-shrink: 0;
+}
+
+.timeline-horizontal-block .history-photo {
+  max-width: 300px;
+  height: auto;
+  border: 5px solid #BB2B22; 
+  object-fit: cover;
+}
+
+.timeline-content-left {
+  font-size: 30px;
+  max-width: 1000px;
+  line-height: 1.6;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: left;
+  margin-left: 0;
+  margin-right: auto;
+  position: relative;
+}
+
+.timeline-content3 {
+  font-size: 30px;
+  font-weight: normal;
+  width: 80vw;
+  max-width: 100%;
+  line-height: 1.6;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  box-sizing: border-box;
+}
+
+.photo-container {
+  flex-shrink: 0;
+}
+
+.photo-right {
+  padding-left: 40px;
+}
+
+.history-photo {
+  max-width: 500px;
+  height: auto;
+  object-fit: cover;
+}
+
+.photo-container2 {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  position: relative;
+  padding: 10px 0;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.photo-container2 .history-photo {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  border: 5px solid #BB2B22; 
 }
 
 @media (max-width: 768px) {
@@ -120,6 +217,7 @@ padding: 100px 0 0 0;
   .history-header {
     font-size: 36px;
     text-align: center;
+    font-weight: normal;
     margin-bottom: 60px;
   }
 
@@ -139,6 +237,7 @@ padding: 100px 0 0 0;
 
   .timeline-year {
     font-size: 32px;
+    font-weight: normal;
     left: -90px;
   }
 
@@ -148,16 +247,22 @@ padding: 100px 0 0 0;
     left: -6px;
   }
 
-  .timeline-content {
+  .timeline-content,
+  .timeline-content2,
+  .timeline-content-left,
+  .timeline-content3 {
     font-size: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 20px;
+    font-weight: normal;
+    padding: 0 20px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
+
   .timeline-item.horizontal {
     flex-direction: column;
     align-items: center;
+    margin-left: 0;
   }
 
   .photo-container {
@@ -182,5 +287,5 @@ padding: 100px 0 0 0;
 
 .fade-in {
   animation: fadeInUp 1s ease-out forwards;
-  opacity: 0; 
+  opacity: 0;
 }

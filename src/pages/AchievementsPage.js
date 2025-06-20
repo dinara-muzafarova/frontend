@@ -1,28 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import API from '../api/axios';
+import React from 'react';
+import './AchievementsPage.css';
 
 const AchievementsPage = () => {
-  const [achievements, setAchievements] = useState([]);
-
-  useEffect(() => {
-    API.get('achievements/')
-      .then(res => setAchievements(res.data))
-      .catch(err => console.error(err));
-  }, []);
+  const achievements = [
+    {
+      id: 1,
+      title: 'Студентка группы АС-21-04 Александра Лабушкина участница конкурса "Королева Нефть 2025"',
+      description: '6 марта в актовом зале ДК «Губкинец» состоялся ежегодный конкурс «Королева Нефть 2025»! В нём приняли участие 11 самых ярких студенток нашего университета. Факультет АиВТ представляла очаровательная Александра Лабушкина. Аля выступила с завораживающим творческим номером, поразила своей красотой на дефиле и проявила себя в «Конкурсе Х».По итогам конкурса Аля победила в номинации «Романтичность»! Искренне поздравляем нашу Алю и желаем удачи в дальнейших конкурсах!✨',
+      date: '2025-08-06',
+      photo: '/3U4lcXnIhe4.jpg',
+    },
+    {
+      id: 2,
+      title: 'Анастасия Шелякина, студентка группы АС-22-05, победитель кейс чемпионата',
+      description: '9 октября 2024 года прошёл финал кейс-чемпионата от Axenix и кейс-клуба Губкинского университета. В финал прошли шесть команд из различных университетов страны, среди которых три команды представляли Губкинский университет. Студенты достойно проявили себя в решении сложных кейсов, предлагая инновационные и практичные решения актуальных проблем индустрии. По итогам чемпионата первое место заняла команда «ТехноГубкин», представленная студентами факультета АиВТ: Анастасия Шелякина (группа АС-22-05) и Игорь Кобелев (группа АТ-22-01).',
+      date: '2024-10-09',
+      photo: '/keis.JPG',
+    },
+    {
+      id: 3,
+      title: 'Студент группы АС-21-05, Виктор Негробов - победитель I Хакатона для студентов вузов-партнеров ПАО «Газпром»',
+      description: 'C 19 по 23 августа 2024 года на базе Уфимского государственного нефтяного технического университета был проведен I Хакатон для студентов вузов-партнеров ПАО «Газпром». Виктор состоял в команде РГУ нефти и газа (НИУ) имени И.М. Губкина, которая стала победителем в тематическом направлении «Цифровой двойник». Поздравляем с победой!',
+      date: '2024-08-19',
+      photo: '/75784877f2e632280590d1dee95fc5f1.jpg',
+    },
+  ];
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Достижения кафедры АСУ</h2>
-      <ul>
-        {achievements.map(item => (
-          <li key={item.id} style={{ marginBottom: '20px' }}>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <p><strong>Дата:</strong> {item.date}</p>
-            {item.student_name && <p><strong>Студент:</strong> {item.student_name}</p>}
-          </li>
-        ))}
-      </ul>
+    <div className="achievements-container">
+      <h2 className="achievements-title">Достижения студентов кафедры АСУ</h2>
+      <div className="achievements-list">
+        {achievements.length > 0 ? (
+          achievements.map((achievement) => (
+            <div key={achievement.id} className="achievement">
+              <h3 className="achievement-title">{achievement.title}</h3>
+              <p className="achievement-date">{achievement.date}</p>
+              <p className="achievement-description">{achievement.description}</p>
+              {achievement.photo && (
+                <img src={achievement.photo} alt={achievement.title} className="achievement-photo" />
+              )}
+            </div>
+          ))
+        ) : (
+          <p>Нет достижений для отображения.</p>
+        )}
+      </div>
     </div>
   );
 };

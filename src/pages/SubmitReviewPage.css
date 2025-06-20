@@ -1,0 +1,90 @@
+.alumni-container {
+  padding: 40px 20px;
+  font-family: 'Futura PT', sans-serif;
+  color: #303030;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.alumni-title {
+  font-family: 'MAK', sans-serif;
+  color: #BB2B22;
+  font-size: 50px;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.alumni-form {
+  background-color: #F6F3EE;
+  padding: 30px;
+  border: 2px solid #0A386B;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(10, 56, 107, 0.15);
+}
+
+.alumni-form-group {
+  margin-bottom: 20px;
+}
+
+.alumni-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.alumni-input,
+.alumni-textarea {
+  width: 95%;
+  padding: 10px 15px;
+  border: 1px solid #0A386B;
+  border-radius: 6px;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 16px;
+}
+
+.alumni-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.alumni-file-input {
+  margin-top: 5px;
+}
+
+.alumni-submit-button {
+  background-color: #BB2B22;
+  color: #F6F3EE;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'Futura PT', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.alumni-submit-button:hover {
+  background-color: #9e2222;
+}
+
+.alumni-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: rgba(10, 56, 107, 0.1);
+  text-align: center;
+  font-size: 16px;
+}
+
+.alumni-link {
+  color: #BB2B22;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.alumni-link:hover {
+  text-decoration: underline;
+}
